@@ -9,6 +9,8 @@ from openpyxl import load_workbook
 from openpyxl.utils import get_column_letter
 from datetime import datetime
 
+
+
 # Obtener la fecha y hora actual
 fecha_actual = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
 
@@ -30,9 +32,9 @@ nombres_escritos = []
 # Obtener la columna correspondiente a la fecha actual
 columna_fecha = get_column_letter(3)  # Columna C
 
-ruta_programa = '/home/jetson/prueba/telearch.py'
+ruta_programa = '/home/jetson/Reconocimiento_Final/telearch.py'
 
-KNOWN_FACES_DIR = '/home/jetson/prueba/fotos'
+KNOWN_FACES_DIR = '/home/jetson/Reconocimiento_Final/fotos'
 TOLERANCE = 0.6
 FRAME_THICKNESS = 3
 FONT_THICKNESS = 2
@@ -53,6 +55,8 @@ print('Listo!')
 print('Inicializando cámara...')
 
 cap = cv2.VideoCapture(1)
+cap.set(3, 640)  # Ancho de resolución
+cap.set(4, 480)  # Alto de resolución
 
 while True:
     ret, frame = cap.read()
